@@ -59,8 +59,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: theme.sizes.base * 2,
     },
     avatar: {
-        height: theme.sizes.base * 2.2,
-        width: theme.sizes.base * 2.2,
+        height: theme.sizes.base * 3,
+        width: theme.sizes.base * 3,
+        backgroundColor : '#f2f2f2',
     },
     tabs: {
         borderBottomColor: theme.colors.gray2,

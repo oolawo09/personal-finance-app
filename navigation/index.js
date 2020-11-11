@@ -32,13 +32,16 @@ const screens = createStackNavigator({
 }, {
   defaultNavigationOptions: {
     headerStyle: {
-      height: theme.sizes.base * 5,
-      backgroundColor: theme.colors.primary, // or 'white
+      height: theme.sizes.base * 7,
+      backgroundColor: '#f2f2f2', // or 'white
       borderBottomColor: "transparent",
+      shadowOpacity: 0,
+      borderBottomWidth: 0,
       elevation: 0, // for android only
     },
+    title: ' ',
     headerBackImage: <Image source={require('../assets/icons/back.png')} />,
-    headerBackTitle: null,
+    headerBackTitle: ' ', //Doing this to hide the back button label  
     headerLeftContainerStyle: {
       alignItems: 'center',
       marginLeft: theme.sizes.base * 2,    //for iOS multiply the value by 2
