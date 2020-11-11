@@ -1,5 +1,5 @@
 import React from 'react';
-import { Animated, Dimensions, FlatList, Image, Modal, ScrollView, StyleSheet } from 'react-native'; //TODO: complete illustrations section after debugging exactly why the defaualt prps seem inaccessible
+import { Animated, Dimensions, FlatList, Image, Modal, ScrollView, StyleSheet } from 'react-native'; 
 import { Block, Button, Text } from '../components';
 import { theme } from '../constants';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -32,7 +32,7 @@ export default class Welcome extends React.Component {
       horizontal
       pagingEnabled
       scrollEnabled
-      showHorizontalScrollingIndicator={false}
+      showsHorizontalScrollIndicator={false}
       scrollEventThrottle={16}
       snapToAlignment="center"
       data={illustrations}
@@ -184,6 +184,5 @@ const styles = StyleSheet.create({
  * TODO:
  * - learn more about how the animate component works
  * - hide horizontal scrollbar underneath the illustrations
- * - illustrations are really tiny for some reason now
  */
 

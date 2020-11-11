@@ -88,7 +88,6 @@ export default class Forgot extends React.Component {
 
 const VALID_EMAIL = 'john.doe@gmail.com';
 
-
 const styles = StyleSheet.create({
     forgot: {
         flex: 1,

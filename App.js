@@ -40,10 +40,6 @@ export default class App extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-
-})
-
 const images = [
   require('./assets/images/plants_1.png'),
   require('./assets/images/plants_2.png'),

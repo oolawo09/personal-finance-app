@@ -9,11 +9,12 @@ import Login from '../screens/Login';
 import Signup from '../screens/Signup';
 import Forgot from '../screens/Forgot';
 import Home from '../screens/Home'; 
+import Settings from '../screens/Settings';
+
 /*
 import Explore from '../screens/Explore';
 import Browse from '../screens/Browse';
 import Product from '../screens/Product';
-import Settings from '../screens/Settings';
 */
 
 const screens = createStackNavigator({
@@ -22,16 +23,17 @@ const screens = createStackNavigator({
   Signup,
   Forgot,
   Home,
+  Settings,
   /*
   Explore,
   Browse,
   Product,
-  Settings,*/
+  ,*/
 }, {
   defaultNavigationOptions: {
     headerStyle: {
-      height: theme.sizes.base * 4,
-      backgroundColor: theme.colors.white, // or 'white
+      height: theme.sizes.base * 5,
+      backgroundColor: theme.colors.primary, // or 'white
       borderBottomColor: "transparent",
       elevation: 0, // for android only
     },
