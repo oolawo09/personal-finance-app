@@ -34,9 +34,18 @@ export default class Home extends React.Component {
         )
     }
 
-    renderItem ({item}){ 
+    renderItem({ item }) {
         return (
-            <Text>{item.creditor} paid {item.debtor} {item.amount} for {item.description}</Text>
+            <Block style={styles.debt}>
+                <Block row space="between">
+                    <Image source={item.avatar} style={styles.avatar}></Image>
+                    <Text bold>ksh. {item.amount}</Text>
+                </Block>
+                <Block>
+                    <Text>{item.creditor} owes {item.debtor} for '{item.description}'</Text>
+                </Block>
+            </Block>
+
         )
 
     }
@@ -54,8 +63,7 @@ export default class Home extends React.Component {
          * fixes: format each debt item better, and draw debt data from the mock module 
          */
 
-        const {debts } = this.props
-        console.log('individual debt from the backend: ' + debts[0].creditor)
+        const { debts } = this.props
 
         return (
             <FlatList
@@ -100,9 +108,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#f2f2f2',
     },
     debt: {
-        marginHorizontal: theme.sizes.base * 4,
+        marginHorizontal: theme.sizes.base * 2,
         borderBottomWidth: 0.5,                    //for iOS : StyleSheet.hairLineWidth
         borderBottomColor: theme.colors.gray2,
+        paddingBottom: theme.sizes.base * 0.5,
+        paddingTop: theme.sizes.base * 0.5,
+
     },
     tabs: {
         borderBottomColor: theme.colors.gray2,

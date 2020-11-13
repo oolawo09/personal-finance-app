@@ -16,6 +16,14 @@ const all_debts =  [
         'description': 'Friday night drinks',
         'avatar': require('../assets/images/avatar.png'),
       },  
+      {
+        'id': 3,
+        'debtor': 'JD',
+        'amount': 500,
+        'creditor': 'Jay z', 
+        'description': 'Lunch at the kibandaski',
+        'avatar': require('../assets/images/avatar.png'),
+      },
   ]
 
 const profile = {
