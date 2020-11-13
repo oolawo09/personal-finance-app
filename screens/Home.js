@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, FlatList } from 'react-native';
 import { theme, mock } from '../constants';
 import { Button, Block, Text } from '../components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -7,11 +7,12 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class Home extends React.Component {
     static defaultProps = {
-        profile: mock.profile
+        profile: mock.profile,
+        debts: mock.all_debts,
     }
 
     state = {
-        active: 'debts',
+        active: 'owed',
     }
 
     renderTab(tab) {
@@ -33,9 +34,41 @@ export default class Home extends React.Component {
         )
     }
 
+    renderItem ({item}){ 
+        return (
+            <Text>{item.creditor} paid {item.debtor} {item.amount} for {item.description}</Text>
+        )
+
+    }
+
+    renderDebtList() {
+        /**
+         * TODO:
+         * Render a list of debtors and creditors, dependening on what tab is active. 
+         * Allow a user to search for a list item  
+         * Each list item will be in the format: 
+         *          [creditor avatar] sent [debtor avatar] [amount] for [description]. 
+         */
+
+        /**
+         * fixes: format each debt item better, and draw debt data from the mock module 
+         */
+
+        const {debts } = this.props
+        console.log('individual debt from the backend: ' + debts[0].creditor)
+
+        return (
+            <FlatList
+                data={debts}
+                renderItem={this.renderItem}
+                keyExtractor={debt => debt.id}
+            />
+
+        );
+    }
 
     render() {
-        const { profile, navigation, categories } = this.props;
+        const { profile, navigation } = this.props;
         const tabs = ['owed', 'due'];
         //TODO: insert actual avatar. Figure out bug: https://github.com/facebook/react-native/issues/16332
         return (
@@ -43,11 +76,14 @@ export default class Home extends React.Component {
                 <Block flex={false} row center space="between" style={styles.header}>
                     <Text h1 bold>Home</Text>
                     <Button onPress={() => navigation.navigate('Settings')}>
-                        <Image source={profile.avatar} style={styles.avatar}/>
+                        <Image source={profile.avatar} style={styles.avatar} />
                     </Button>
                 </Block>
                 <Block flex={false} row style={styles.tabs}>
                     {tabs.map(tab => this.renderTab(tab))}
+                </Block>
+                <Block flex={false} row>
+                    {this.renderDebtList()}
                 </Block>
             </Block>
         );
@@ -61,7 +97,12 @@ const styles = StyleSheet.create({
     avatar: {
         height: theme.sizes.base * 3,
         width: theme.sizes.base * 3,
-        backgroundColor : '#f2f2f2',
+        backgroundColor: '#f2f2f2',
+    },
+    debt: {
+        marginHorizontal: theme.sizes.base * 4,
+        borderBottomWidth: 0.5,                    //for iOS : StyleSheet.hairLineWidth
+        borderBottomColor: theme.colors.gray2,
     },
     tabs: {
         borderBottomColor: theme.colors.gray2,
