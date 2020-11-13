@@ -12,7 +12,7 @@ export default class Home extends React.Component {
     }
 
     state = {
-        active: 'owed',
+        active: 'received',
     }
 
     renderTab(tab) {
@@ -51,18 +51,6 @@ export default class Home extends React.Component {
     }
 
     renderDebtList() {
-        /**
-         * TODO:
-         * Render a list of debtors and creditors, dependening on what tab is active. 
-         * Allow a user to search for a list item  
-         * Each list item will be in the format: 
-         *          [creditor avatar] sent [debtor avatar] [amount] for [description]. 
-         */
-
-        /**
-         * fixes: format each debt item better, and draw debt data from the mock module 
-         */
-
         const { debts } = this.props
 
         return (
@@ -75,9 +63,14 @@ export default class Home extends React.Component {
         );
     }
 
+    handleNewRequest(){ 
+        const {navigation} = this.props; 
+        navigation.navigate('Request');
+    }
+
     render() {
         const { profile, navigation } = this.props;
-        const tabs = ['owed', 'due'];
+        const tabs = ['received', 'sent'];
         //TODO: insert actual avatar. Figure out bug: https://github.com/facebook/react-native/issues/16332
         return (
             <Block>
@@ -92,6 +85,11 @@ export default class Home extends React.Component {
                 </Block>
                 <Block flex={false} row>
                     {this.renderDebtList()}
+                </Block>
+                <Block style={styles.payOrRequest}>
+                    <Button gradient onPress={() => this.handleNewRequest()}>
+                        <Text bold white center>Request</Text>
+                    </Button>
                 </Block>
             </Block>
         );
@@ -128,6 +126,9 @@ const styles = StyleSheet.create({
     active: {
         borderBottomColor: theme.colors.secondary,
         borderBottomWidth: 3,
+    },
+    payOrRequest: {
+        marginHorizontal: theme.sizes.base * 2,
     }
 });
 

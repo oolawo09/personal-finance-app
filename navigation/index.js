@@ -10,6 +10,8 @@ import Signup from '../screens/Signup';
 import Forgot from '../screens/Forgot';
 import Home from '../screens/Home'; 
 import Settings from '../screens/Settings';
+import Request from '../screens/Request';
+
 
 /*
 import Explore from '../screens/Explore';
@@ -24,6 +26,7 @@ const screens = createStackNavigator({
   Forgot,
   Home,
   Settings,
+  Request,
   /*
   Explore,
   Browse,

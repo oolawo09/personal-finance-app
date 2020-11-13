@@ -2,7 +2,6 @@ import {AppLoading} from 'expo';
 import {Asset} from 'expo-asset'; 
 import Navigation from './navigation/index'; 
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { Block } from './components'; 
 
 export default class App extends React.Component { 
